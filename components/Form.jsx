@@ -6,6 +6,7 @@ export default function Form() {
     valorHemoglobina: "",
     genero: "",
   }); //estado
+
   const [result, setResult] = useState("");
   const formRef = useRef(null);
 
@@ -28,14 +29,8 @@ export default function Form() {
   const getResponse = () => {
     const valorHemoglobina = parseFloat(values.valorHemoglobina);
     const genero = parseFloat(values.genero);
-    console.log(typeof valorHemoglobina, genero);
-    try {
-      //proceso la logica y la guardo en un nuevo estado
-      const result = indicarRangoHemogloblina(valorHemoglobina, genero);
-      setResult(result);
-    } catch (error) {
-      console.log(error);
-    }
+    const result = indicarRangoHemogloblina(valorHemoglobina, genero);
+    setResult(result);
   };
 
   //Interfaz
@@ -78,8 +73,8 @@ export default function Form() {
       </button>
 
       <div>
-        {values.genero === "1"&&<p className="h4Center">Masculino</p>}
-        {values.genero === "2"&&<p className="h4Center">Femenino</p>}
+        {values.genero === "1" && <p className="h4Center">Masculino</p>}
+        {values.genero === "2" && <p className="h4Center">Femenino</p>}
 
         <p className="pCenter">
           Tu nivel de hemoglobina es: <strong>{result}</strong>
